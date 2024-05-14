@@ -1,1 +1,3 @@
-class AppRoutes {}
+class AppRoutes {
+  static const String PLACE_FORM = '/place-form';
+}
