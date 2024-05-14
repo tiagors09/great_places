@@ -1,3 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GreatPlaces with ChangeNotifier {}
+import '../model/place.dart';
+
+class GreatPlaces with ChangeNotifier {
+  List<Place> _items = [];
+}
