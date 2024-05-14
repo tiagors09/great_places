@@ -48,8 +48,8 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          git config --global user.email tiagorodriguessousa9@gmail.com
-          git config --global user.name Tiago Rodrigues Sousa
+          git config --global user.email "tiagorodriguessousa9@gmail.com"
+          git config --global user.name "Tiago Rodrigues Sousa"
           cd build
           git init
           git add .
