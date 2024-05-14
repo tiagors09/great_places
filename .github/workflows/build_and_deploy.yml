@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
     
       - name: Build release project
-        run: flutter build web --web-renderer=auto
+        run: flutter build web --base-href=/great_places/ --web-renderer=auto
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
