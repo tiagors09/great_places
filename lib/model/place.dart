@@ -17,4 +17,11 @@ class Place {
   final String title;
   final PlaceLocation location;
   final File image;
+
+  Place(
+    this.id,
+    this.title,
+    this.location,
+    this.image,
+  );
 }
