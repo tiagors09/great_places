@@ -14,8 +14,14 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
       appBar: AppBar(
         title: const Text('Novo Lugar'),
       ),
-      body: const Center(
-        child: Text('Form!'),
+      body: const Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Titutlo',
+            ),
+          ),
+        ],
       ),
     );
   }
