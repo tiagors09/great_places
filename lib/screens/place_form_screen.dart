@@ -14,7 +14,7 @@ class PlaceFormScreen extends StatefulWidget {
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
   final _titleController = TextEditingController();
-  late File _pickedImage;
+  late File? _pickedImage;
 
   void _selectImage(File pickedImage) {
     _pickedImage = pickedImage;
@@ -30,7 +30,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
       listen: false,
     ).addPlace(
       _titleController.text,
-      _pickedImage,
+      _pickedImage!,
     );
 
     Navigator.of(context).pop();
