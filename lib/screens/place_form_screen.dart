@@ -53,7 +53,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                   TextField(
                     controller: _titleController,
                     decoration: const InputDecoration(
-                      labelText: 'Titutlo',
+                      labelText: 'Titulo',
                     ),
                   ),
                   Container(
