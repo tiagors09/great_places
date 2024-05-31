@@ -25,33 +25,41 @@ class PlacesListScreen extends StatelessWidget {
           context,
           listen: false,
         ).loadPlaces(),
-        builder: (ctx, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Consumer<GreatPlaces>(
-                    builder: (ctx, greatPlaces, child) {
-                      return greatPlaces.itemsCount == 0
-                          ? child!
-                          : ListView.builder(
-                              itemCount: greatPlaces.itemsCount,
-                              itemBuilder: (ctx, index) => ListTile(
-                                onTap: () {},
-                                contentPadding: const EdgeInsets.all(8),
-                                leading: CircleAvatar(
-                                  backgroundImage: FileImage(
-                                    greatPlaces.items[index].image,
-                                  ),
-                                ),
-                                title: Text(greatPlaces.items[index].title),
+        builder: (ctx, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<GreatPlaces>(
+                builder: (ctx, greatPlaces, child) {
+                  return greatPlaces.itemsCount == 0
+                      ? child!
+                      : ListView.builder(
+                          itemCount: greatPlaces.itemsCount,
+                          itemBuilder: (ctx, index) => ListTile(
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                AppRoutes.PLACE_DETAIL,
+                                arguments: greatPlaces.itemByIndex(index),
+                              );
+                            },
+                            contentPadding: const EdgeInsets.all(8),
+                            leading: CircleAvatar(
+                              backgroundImage: FileImage(
+                                greatPlaces.items[index].image,
                               ),
-                            );
-                    },
-                    child: const Center(
-                      child: Text('Nenhum local cadastrado'),
-                    ),
-                  ),
+                            ),
+                            title: Text(greatPlaces.items[index].title),
+                            subtitle: Text(
+                              greatPlaces.itemByIndex(index).location.address,
+                            ),
+                          ),
+                        );
+                },
+                child: const Center(
+                  child: Text('Nenhum local cadastrado'),
+                ),
+              ),
       ),
     );
   }
