@@ -9,7 +9,7 @@ abstract class DbUtil {
     return sql.openDatabase(
       path.join(dbPath, 'places.db'),
       onCreate: (db, version) => db.execute(
-        'CREATE TABLE places (id TEXT PRIMARY KEY, title TEXT, image TEXT)',
+        'CREATE TABLE places (id TEXT PRIMARY KEY, title TEXT, image TEXT, lat REAL, lng REAL, address TEXT)',
       ),
       version: 1,
     );
@@ -18,6 +18,7 @@ abstract class DbUtil {
   static Future<void> insert(String table, Map<String, Object> data) async {
     final db = await DbUtil.database();
 
+    print(data);
     await db.insert(
       table,
       data,
